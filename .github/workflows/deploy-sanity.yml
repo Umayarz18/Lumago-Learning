@@ -1,0 +1,25 @@
+name: Build && Deploy Sanity Studio
+on:
+  push:
+    branches: [main]
+    
+jobs:
+  sanity-deploy:
+    name: Build & Deploy Sanity Studio
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: |
+          cd studio
+          npm install
+          npm install @sanity/cli
+      - name: Deploy Sanity Studio
+        run: |
+          set -e
+          cd studio
+          SANITY_AUTH_TOKEN="${{ secrets.SANITY_AUTH_TOKEN }}" npx sanity deploy
