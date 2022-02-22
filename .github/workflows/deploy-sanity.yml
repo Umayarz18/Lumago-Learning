@@ -16,8 +16,8 @@ jobs:
       - name: Install dependencies
         run: |
           cd studio
-          npm install
-          npm install @sanity/cli
+          yarn
+          yarn add @sanity/cli
       - name: Deploy Sanity Studio
         run: |
           set -e
