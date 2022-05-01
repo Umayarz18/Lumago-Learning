@@ -7,6 +7,7 @@ import { getClient } from "../../../lib/sanity.server";
 import { config } from "../../../lib/config";
 import BlockContent from "@sanity/block-content-to-react";
 import Head from "next/head";
+import { Video } from "../../../components/Video";
 /**
  * Creates the individual course home page that lists the available lectures,
  * quizzes, and questions to be completed before the next course.
@@ -18,34 +19,30 @@ export default function Course(props) {
 
     const {
         course_name = "Unknown Course",
-        color = "#fefefe",
         course_description = "Empty description",
         lectures,
-        activities = [],
+        video_link
     } = props;
 
     return (
         <TempLayout>
             <Head>
-                <title>{course_name} | Sprout Learning</title>
+                <title>{course_name} </title>
                 <link rel="icon" href="/sprout_logo.jpg" />
             </Head>
 
-            <div className="flex flex-col justify-center items-center" >
+            <div className="flex flex-col justify-center items-center max-w-7xl" >
                 <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl p-3"> {course_name}</h1>
-                <div className="m-4 lg:w-3/6 text-center">
-                    <BlockContent
-                        blocks={course_description}
-                        imageOptions={{ w: 320, h: 240, fit: "max" }}
-                        {...config}
-                    />
-                </div>
+                {video_link && (<Video link={video_link} />)}
+                <p className="m-4 lg:w-3/6 text-center">
+                    {course_description}
+                </p>
             </div>
             <section>
                 <div className="grid grid-cols-1 lg:grid-cols-2 lg:m-16 gap-5">
                     {lectures.map(({ _id, color, lecture_name, emoji, lecture_slug }) => (
-                        <a href={`/grow/courses/${name}/${lecture_slug}`} key={_id} >
-
+                        <a href={`/courses/${name}/${lecture_slug}`} key={_id} >
+                            <span>{emoji}</span>{lecture_name}
                         </a>
                     ))}
                 </div>
@@ -60,6 +57,7 @@ const query = groq`*[_type == "course" && slug.current == $name][0]{
     course_name,
     color,
     course_description,
+    video_link,
     "lectures": *[_type == "lecture" && references(^._id)]{
     _id,
     color,

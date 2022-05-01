@@ -15,7 +15,7 @@ export const Card = ({ children, classes, ...props }: CardProps) => {
 	return (
 		<div
 			className={[
-				"bg-gray-100 h-96 w-96 rounded-3xl border-4 border-green-600",
+				"bg-gray-50 h-96 w-96 rounded-lg border-4 border-indigo-400",
 				classes,
 			].join(" ")}
 		>

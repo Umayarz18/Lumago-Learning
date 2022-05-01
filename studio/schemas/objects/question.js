@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 export default {
-  title: 'Question',
-  name: 'question',
-  type: 'object',
+  title: "Question",
+  name: "question",
+  type: "object",
   icon: () => {
     return (
       <svg
@@ -24,37 +24,37 @@ export default {
   },
   fields: [
     {
-      title: 'Question',
-      name: 'question',
-      type: 'string',
+      title: "Question",
+      name: "question",
+      type: "string",
     },
     {
-      title: 'Type',
-      name: 'type',
-      type: 'array',
-      description: 'Select the different types this questions can take on.',
-      of: [{ type: 'string' }],
+      title: "Type",
+      name: "type",
+      type: "array",
+      description: "Select the different types this questions can take on.",
+      of: [{ type: "string" }],
       options: {
         list: [
-          { title: 'Multiple Choice', value: 'MC' },
-          { title: 'Fill in the Blank', value: 'FITB' },
-          { title: 'Open Response', value: 'OR' },
+          { title: "Multiple Choice", value: "MC" },
+          { title: "Fill in the Blank", value: "FITB" },
+          { title: "Open Response", value: "OR" },
         ],
       },
       validation: (Rule) => Rule.unique(),
     },
     {
-      title: 'Answer',
-      name: 'answer',
-      type: 'string',
+      title: "Answer",
+      name: "answer",
+      type: "string",
     },
     {
-      title: 'Options',
-      name: 'options',
-      type: 'array',
+      title: "Options",
+      name: "options",
+      type: "array",
       of: [
         {
-          type: 'string',
+          type: "string",
         },
       ],
     },

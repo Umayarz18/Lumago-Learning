@@ -17,7 +17,8 @@
     "iframe-pane",
     "@sanity/color-input",
     "social-preview",
-    "asset-source-unsplash"
+    "asset-source-unsplash",
+    "mux-input"
   ],
   "env": {
     "development": {

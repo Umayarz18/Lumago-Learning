@@ -34,6 +34,7 @@
     "sanity-plugin-asset-source-unsplash": "^0.1.5",
     "sanity-plugin-dashboard-widget-netlify": "^1.1.0",
     "sanity-plugin-iframe-pane": "^1.0.15",
+    "sanity-plugin-mux-input": "^1.1.1",
     "sanity-plugin-social-preview": "^0.1.5",
     "styled-components": "^5.2.0"
   },

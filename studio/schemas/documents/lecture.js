@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 export default {
-  title: 'Lecture',
-  name: 'lecture', //identifier for the api
-  type: 'document',
+  title: "Lecture",
+  name: "lecture", //identifier for the api
+  type: "document",
   icon: () => {
     return (
       <svg
@@ -24,66 +24,72 @@ export default {
   //Fields inside the document
   fields: [
     {
-      title: 'Lecture Name',
-      name: 'lecture_name',
-      type: 'string',
+      title: "Lecture Name",
+      name: "lecture_name",
+      type: "string",
     },
     {
-      title: 'Color',
-      name: 'color',
-      type: 'color',
+      title: "Color",
+      name: "color",
+      type: "color",
     },
     {
-      title: 'Emoji',
-      name: 'emoji',
-      type: 'string',
+      title: "Emoji",
+      name: "emoji",
+      type: "string",
     },
     {
-      title: 'Slug',
-      name: 'slug',
-      type: 'slug',
+      title: "Slug",
+      name: "slug",
+      type: "slug",
       options: {
-        source: 'lecture_name',
+        source: "lecture_name",
         maxLength: 96,
       },
     },
     {
-      title: 'Lecture Body',
-      name: 'lecture_body',
-      type: 'bodyPortableText',
+      title: "Video Link",
+      name: "video_link",
+      type: "url",
+      description: "Ensure the youtube link is an embed link and not a watch link",
     },
     {
-      title: 'Course Source',
-      name: 'course_source',
-      type: 'reference',
-      to: [{ type: 'course' }],
+      title: "Lecture Body",
+      name: "lecture_body",
+      type: "bodyPortableText",
     },
     {
-      title: 'Module Source',
-      name: 'module_source',
-      type: 'reference',
-      to: [{ type: 'module' }],
+      title: "Course Source",
+      name: "course_source",
+      type: "reference",
+      to: [{ type: "course" }],
     },
     {
-      title: 'Questions',
-      name: 'questions',
-      type: 'array',
-      of: [{ type: 'question' }],
+      title: "Module Source",
+      name: "module_source",
+      type: "reference",
+      to: [{ type: "module" }],
     },
     {
-      title: 'Next Page',
-      name: 'next_page',
-      type: 'reference',
-      to: [{ type: 'lecture' }, { type: 'activity' }],
+      title: "Questions",
+      name: "questions",
+      type: "array",
+      of: [{ type: "question" }],
+    },
+    {
+      title: "Next Page",
+      name: "next_page",
+      type: "reference",
+      to: [{ type: "lecture" }, { type: "activity" }],
     },
   ],
   preview: {
     select: {
-      title: 'lecture_name',
-      courseSource: 'course_source.course_name',
-      status: 'emoji',
-      color: 'color.hex',
-      moduleSource: 'module_source.module_name',
+      title: "lecture_name",
+      courseSource: "course_source.course_name",
+      status: "emoji",
+      color: "color.hex",
+      moduleSource: "module_source.module_name",
     },
     prepare({ title, courseSource, moduleSource, status, color }) {
       return {
@@ -94,17 +100,17 @@ export default {
         media: (
           <span
             style={{
-              fontSize: '1.5rem',
+              fontSize: "1.5rem",
               backgroundColor: color,
-              width: '4rem',
-              height: '4rem',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: '0.5rem',
+              width: "4rem",
+              height: "4rem",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "0.5rem",
             }}
           >
-            <p>{status ? status : '🎫'}</p>
+            <p>{status ? status : "🎫"}</p>
           </span>
         ),
       };

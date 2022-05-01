@@ -1,10 +1,10 @@
-import React from 'react';
-import lecture from './module';
-import activity from './activity';
-import blockContent from '../objects/blockContent';
-import bodyPortableText from '../objects/bodyPortableText';
+import React from "react";
+import lecture from "./module";
+import activity from "./activity";
+import blockContent from "../objects/blockContent";
+import bodyPortableText from "../objects/bodyPortableText";
 export default {
-  title: 'Course',
+  title: "Course",
   icon: () => {
     return (
       <svg
@@ -25,47 +25,53 @@ export default {
       </svg>
     );
   },
-  name: 'course', //identifier for the api
-  type: 'document',
+  name: "course", //identifier for the api
+  type: "document",
   //Fields inside the document
   fields: [
     {
-      title: 'Course Name',
-      name: 'course_name',
-      type: 'string',
+      title: "Course Name",
+      name: "course_name",
+      type: "string",
     },
     {
-      title: 'Slug',
-      name: 'slug',
-      type: 'slug',
+      title: "Slug",
+      name: "slug",
+      type: "slug",
       options: {
-        source: 'title',
+        source: "title",
         maxLength: 96,
       },
     },
     {
-      title: 'Color',
-      name: 'color',
-      type: 'color',
+      title: "Color",
+      name: "color",
+      type: "color",
     },
     {
-      title: 'Emoji',
-      name: 'emoji',
-      type: 'string',
+      title: "Emoji",
+      name: "emoji",
+      type: "string",
     },
     {
-      title: 'Course Description',
-      name: 'course_description',
-      type: 'bodyPortableText',
+      title: "Course Description",
+      name: "course_description",
+      type: "text",
     },
     {
-      title: 'Course Objectives',
-      name: 'course_objectives',
-      type: 'array',
+      title: "Video Link",
+      name: "video_link",
+      type: "url",
+      description: "Ensure the youtube link is an embed link and not a watch link",
+    },
+    {
+      title: "Course Objectives",
+      name: "course_objectives",
+      type: "array",
       of: [
         {
-          title: 'Objective',
-          type: 'object',
+          title: "Objective",
+          type: "object",
           icon: () => {
             return (
               <svg
@@ -86,51 +92,51 @@ export default {
           },
           fields: [
             {
-              title: 'Objective Name',
-              name: 'objective_name',
-              type: 'string',
+              title: "Objective Name",
+              name: "objective_name",
+              type: "string",
             },
             {
-              title: 'Objective Description',
-              name: 'objective_description',
-              type: 'string',
+              title: "Objective Description",
+              name: "objective_description",
+              type: "string",
             },
           ],
         },
       ],
     },
     {
-      title: 'Lectures',
-      name: 'lectures',
+      title: "Lectures",
+      name: "lectures",
       description:
-        'The previous setup of course content. Please ignore for the time being.',
-      type: 'array',
+        "The previous setup of course content. Please ignore for the time being.",
+      type: "array",
       of: [
         {
-          type: 'reference',
-          to: [{ type: 'lecture' }, { type: 'activity' }],
+          type: "reference",
+          to: [{ type: "lecture" }, { type: "activity" }],
         },
       ],
     },
 
     {
-      title: 'Modules',
-      name: 'module',
-      description: 'Use this module system to link content to a course.',
-      type: 'array',
+      title: "Modules",
+      name: "module",
+      description: "Use this module system to link content to a course.",
+      type: "array",
       of: [
         {
-          type: 'reference',
-          to: { type: 'module' },
+          type: "reference",
+          to: { type: "module" },
         },
       ],
     },
   ],
   preview: {
     select: {
-      title: 'course_name',
-      status: 'emoji',
-      color: 'color.hex',
+      title: "course_name",
+      status: "emoji",
+      color: "color.hex",
     },
     prepare({ title, status, color }) {
       return {
@@ -138,17 +144,16 @@ export default {
         media: (
           <span
             style={{
-              fontSize: '1.5rem',
+              fontSize: "1.5rem",
               backgroundColor: color,
-              width: '4rem',
-              height: '4rem',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: '0.5rem',
+              width: "4rem",
+              height: "2rem",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <p>{status ? status : '🎫'}</p>
+            <p>{status ? status : "🎫"}</p>
           </span>
         ),
       };
